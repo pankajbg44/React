@@ -1,19 +1,8 @@
-import Footer from "./Pages/Footer";
-import MainBody from "./Pages/MainBody";
-import Header from "./Pages/Header";
-
 function App() {
-  return (
-    <div>
-      <Header />
-      <MainBody />
-      <MainBody />
-      <MainBody />
-      <Footer />
-    </div>
-  );
+  return <Hello />
 }
 
-
-
+function Hello(){
+  return <h2>Hello World!!!</h2>
+}
 export default App;
