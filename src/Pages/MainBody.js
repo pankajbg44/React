@@ -1,6 +1,6 @@
 function MainBody() {
     return (
-      <div>
+      <div  className="bg bg-success text-light">
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
           porro hic saepe. Aperiam repellat culpa soluta assumenda molestias! Quis

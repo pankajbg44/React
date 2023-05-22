@@ -1,19 +1,10 @@
-import Footer from "./Pages/Footer";
-import MainBody from "./Pages/MainBody";
-import Header from "./Pages/Header";
-
 function App() {
+  let heading = "Hello World!!!";
+
   return (
     <div>
-      <Header />
-      <MainBody />
-      <MainBody />
-      <MainBody />
-      <Footer />
+      <h1>{heading}</h1>
     </div>
   );
 }
-
-
-
 export default App;
