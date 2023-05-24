@@ -1,15 +1,82 @@
-function App() {
-  let text = "Hello Lorem!!!";
-  let para ="Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta esse, fugiat labore, reprehenderit facere perspiciatis voluptate, ducimus et aut ratione inventore? At rem quas fugiat soluta! Cumque minima quas ad sapiente quae consequuntur accusamus aut nam beatae dignissimos veritatis, eum vel quidem iure praesentium reiciendis possimus enim aperiam excepturi dolore.";
-  let style1 = {color:"maroon", backgroundColor: "rgb(178, 214, 243)",padding:8, textAlign:"center"};
-  let style2 = {color:"maroon", backgroundColor: "rgb(193, 240, 165)",padding:8, margin:3, fontSize:20};
+import { useState } from "react";
 
+function App() {
   return (
     <div>
-      <h1 style={style1}>{text}</h1>
-      <p style={style2}>{para}</p>
-      <p style={style2}>{para}</p>
+      <ListDemo />
     </div>
   );
 }
+
+function ListDemo() {
+  let [list, setList] = useState(["444"]);
+  let [imageInput, setImageInput] = useState("");
+  let [isinvalid, setIsInvalid] = useState(false);
+
+  let addNewImage = () => {
+    if (!imageInput) {
+      setIsInvalid(true);
+      return;
+    }
+
+    let imgInputInt = parseInt(imageInput);
+    if (!imgInputInt) {
+      setIsInvalid(true);
+      return;
+    }
+
+    let newList = [imageInput, ...list];
+    setList(newList);
+
+    setIsInvalid(false);
+  };
+
+  let inputImageHandler = (e) => {
+    setImageInput(e.target.value);
+  };
+
+  return (
+    <div className="text-center bg-info">
+      <h1>Image Gallery</h1>
+      <br />
+
+      <div className="my-2">
+        <input
+          type="number"
+          placeholder="Enter Image Id"
+          value={imageInput}
+          onChange={inputImageHandler}
+        />
+        <input type="button" value="Add New Image" onClick={addNewImage} />
+
+        {isinvalid && <div className="text-danger">Invalid Image Id</div>}
+      </div>
+
+      {list.map((item, index) => (
+        <EventDemo key={index} imageId={item} title="first" />
+      ))}
+    </div>
+  );
+}
+
+function EventDemo({ imageId, title }) {
+  let [counter, setCounter] = useState(100);
+  let imageUrl = `https://picsum.photos/id/${imageId}/2000`;
+
+  let likeMe = () => {
+    counter = counter + 1;
+
+    setCounter(counter);
+  };
+
+  // UI
+  return (
+    <div>
+      <img src={imageUrl} alt="" style={{ width: "50vh" }} />
+      <h3>Like {counter}</h3>
+      <input type="button" value="Like Me" onClick={likeMe} />
+    </div>
+  );
+}
+
 export default App;
