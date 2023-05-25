@@ -72,7 +72,7 @@ function EventDemo({ imageId, title }) {
   // UI
   return (
     <div>
-      <img src={imageUrl} alt="" style={{ width: "50vh" }} />
+      <img src={imageUrl} alt="" style={{ width: "30vh" }} />
       <h3>Like {counter}</h3>
       <input type="button" value="Like Me" onClick={likeMe} />
     </div>
